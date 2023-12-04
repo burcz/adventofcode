@@ -53,7 +53,7 @@ pub fn b() {
                 if let Some(x) = cubes.get_mut("blue") {
                     *x = 0;
                 }
-                let game_num = ip.split(":").collect::<Vec<&str>>()[0].split(" ").collect::<Vec<&str>>()[1].parse::<u32>().unwrap();
+                //let game_num = ip.split(":").collect::<Vec<&str>>()[0].split(" ").collect::<Vec<&str>>()[1].parse::<u32>().unwrap();
                 let games = parse_games(ip.split(":").collect::<Vec<&str>>()[1]);
                 for game in games {
                     if game.contains_key("red") && game["red"] > cubes["red"] {

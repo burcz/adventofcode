@@ -96,7 +96,7 @@ pub fn b() {
 }
 
 fn parse_input_line(line: String) -> Vec<char> {
-    return line.chars().collect::<Vec<_>>();
+    return line.chars().collect::<Vec<char>>();
 }
 
 fn get_numbers_from_line<'a>(line: &String, line_number: usize) -> Vec<HashMap<&'a str,usize>> {
