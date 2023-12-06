@@ -44,22 +44,29 @@ pub fn b() {
     //locations.sort();
     //println!("{}",seeds.len());
     //println!("{}",locations.len());
-    let mut i = 69000000;
-    while ans == 0 {
-        if i % 100000 ==0 {
-            println!("{}",i);
+    let mut current = 0;
+    let mut step = 10000000;
+    while step >= 1 {
+        ans = 0;
+        while ans == 0 {
+            //if  current % 100000 == 0 {
+            //    println!("{}",current);
+            //}
+            let mut calc = current + 1;
+            let location = calc;
+            for i in (1..data.len()).rev() {
+                let vectors: Vec<Vec<u128>> = data[i].to_vec();
+                calc = get_prev_value(calc, vectors);
+            }
+            if seed_exists(calc, &data[0][0]) {
+                ans = location;
+                break;
+            }
+            current += step;
         }
-        let mut calc = i + 1;
-        let location = calc;
-        for i in (1..data.len()).rev() {
-            let vectors: Vec<Vec<u128>> = data[i].to_vec();
-            calc = get_prev_value(calc, vectors);
-        }
-        if seed_exists(calc, &data[0][0]) {
-            ans = location;
-            break;
-        }
-        i += 1;
+        current -= step;
+        step = step / 2;
+        //println!("{}", step);
     }
 
     println!("B: {:?}", ans);
