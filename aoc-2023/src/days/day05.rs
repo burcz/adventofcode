@@ -106,16 +106,6 @@ fn get_next_values(nums: Vec<u128>, check_index: usize, data: &Vec<Vec<Vec<u128>
     res
 }
 
-
-fn get_seeds(data: &Vec<u128>) -> Vec<u128> {
-    let mut seeds: Vec<u128> = vec![];
-    for i in (0..data.len()).step_by(2) {
-        for j in 0..data[i+1] {
-            seeds.append(&mut vec![&data[i]+j]);
-        }
-    }
-    seeds
-}
 fn seed_exists(value: u128, data: &Vec<u128>) -> bool {
     for i in (0..data.len()).step_by(2) {
         if value >= data[i] && value <= data[i] + data[i+1] {
@@ -126,14 +116,6 @@ fn seed_exists(value: u128, data: &Vec<u128>) -> bool {
 
 }
 
-fn get_locations(data: Vec<Vec<u128>>) -> Vec<u128> {
-    let mut range: Vec<u128> = vec![];
-    for v in data {
-        range.append(&mut (v[0]..=v[0]+v[2]).collect::<Vec<u128>>());
-    }
-    range
-
-}
 
 fn get_prev_value(value: u128, prev_vectors: Vec<Vec<u128>>) -> u128 {
     for p_v in prev_vectors {
@@ -147,16 +129,6 @@ fn get_prev_value(value: u128, prev_vectors: Vec<Vec<u128>>) -> u128 {
     return value;
 }
 
-fn get_io_min(data: Vec<Vec<u128>>) -> Vec<u128> {
-    let mut i: Vec<u128> = vec![];
-    let mut o: Vec<u128> = vec![];
-    for v in data {
-        i.append(&mut vec![v[1]]);
-        o.append(&mut vec![v[0]]);
-    }
-    let res: Vec<u128> = vec![*i.iter().min().unwrap(), *o.iter().min().unwrap()];
-    res
-}
 
 fn gen_new_indexes(indexes: &mut HashMap<u128,u128>, data: &Vec<Vec<u128>>) {
     //println!("{:?}",data);
