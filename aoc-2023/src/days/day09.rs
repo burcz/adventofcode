@@ -1,5 +1,3 @@
-use num::ToPrimitive;
-
 use crate::utils::line_reader::read_lines;
 
 pub fn a() {
@@ -22,12 +20,6 @@ pub fn a() {
             }
         }
     }
-    //for j in 0..parsed.len() {
-    //for i in (1..parsed[j].len()).rev() {
-    //let last_elem = *parsed[j][i-1].last().unwrap() + *parsed[j][i].last().unwrap();
-    //parsed[j][i-1].append(&mut vec![last_elem]);
-    //}
-    //}
     for i  in 0..parsed.len() {
         for j in 0..parsed[i].len() {
             res += parsed[i][j].last().unwrap();
