@@ -38,7 +38,6 @@ pub fn a() {
 
 pub fn b() {
     let mut instructions: Vec<char> = vec![];
-    let mut points: HashMap<String, Vec<String>> = HashMap::new();
     let mut parsed = HashMap::new();
     if let Ok(lines) = read_lines("./input08") {
         for line in lines {
@@ -58,15 +57,14 @@ pub fn b() {
             }
         }
     }
-    points = get_starting_nodes(&parsed);
+    let points = get_starting_nodes(&parsed);
     let mut currentz = points.get(&"start".to_string()).unwrap().clone();
-    let mut step_count = 0;
     let mut end = points.get(&"end".to_string()).unwrap().clone();
     currentz.sort();
     end.sort();
     let mut step_counts: Vec<usize> = vec![];
     for i in 0..currentz.len() {
-        step_count = 0;
+        let mut step_count = 0;
         while step_count < 100000 {
             let instruction = instructions[step_count % instructions.len()];
                 currentz[i] = step(&currentz[i], &instruction, &parsed);
