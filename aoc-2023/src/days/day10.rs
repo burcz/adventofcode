@@ -50,7 +50,7 @@ pub fn b() {
     let first_steps = get_first_steps(&start, &parsed);
     let mut bef = [start.clone(), [5].to_vec()].to_vec();
     let mut act = first_steps.clone();
-    let mut step = 1;
+    let mut _step = 1;
     //println!("start: {:?}", start);
     let mut turns: Vec<usize> = [0, 0].to_vec();
     let mut path = parsed.clone();
@@ -93,7 +93,7 @@ pub fn b() {
         //println!("turns: {:?}", turns);
 
         let next = get_next_coord(&bef[0], &act[0], &parsed);
-        step += 1;
+        _step += 1;
         if next[0] == start {
             break;
         }
@@ -106,12 +106,12 @@ pub fn b() {
     }
     bef = [start.clone(), [5].to_vec()].to_vec();
     act = first_steps.clone();
-    step = 1;
+    _step = 1;
     loop {
         set_inner(&side, act[1][0], &act[0], &mut parsed, &path);
 
         let next = get_next_coord(&bef[0], &act[0], &parsed);
-        step += 1;
+        _step += 1;
         if next[0] == start {
             break;
         }
@@ -165,9 +165,9 @@ pub fn b() {
             }
         }
     }
-    for l in path.clone() {
+    //for l in path.clone() {
         //println!("{}", l.join(""));
-    }
+    //}
     println!("B: {:?}", inner);
 }
 
