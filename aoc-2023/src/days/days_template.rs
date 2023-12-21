@@ -1,10 +1,10 @@
 use crate::utils::line_reader::read_lines;
 
 pub fn a() {
-    let mut res = 0;
+    let res = 0;
     if let Ok(lines) = read_lines("./input_template") {
         for line in lines {
-            if let Ok(ip) = line {
+            if let Ok(_ip) = line {
             }
         }
     }
@@ -12,10 +12,10 @@ pub fn a() {
 }
 
 pub fn b() {
-    let mut res = 0;
+    let res = 0;
     if let Ok(lines) = read_lines("./input_template") {
         for line in lines {
-            if let Ok(ip) = line {
+            if let Ok(_ip) = line {
             }
         }
     }

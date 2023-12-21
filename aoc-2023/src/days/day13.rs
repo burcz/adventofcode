@@ -1,5 +1,3 @@
-use std::task::Wake;
-
 use crate::utils::line_reader::read_lines;
 
 pub fn a() {
@@ -49,10 +47,10 @@ pub fn a() {
 }
 
 pub fn b() {
-    let mut res = 0;
+    let res = 0;
     if let Ok(lines) = read_lines("./input13") {
         for line in lines {
-            if let Ok(ip) = line {
+            if let Ok(_ip) = line {
             }
         }
     }

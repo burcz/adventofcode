@@ -26,10 +26,10 @@ pub fn a() {
 }
 
 pub fn b() {
-    let mut res = 0;
+    let res = 0;
     if let Ok(lines) = read_lines("./input14") {
         for line in lines {
-            if let Ok(ip) = line {
+            if let Ok(_ip) = line {
             }
         }
     }
@@ -53,12 +53,12 @@ fn move_line(to_num: usize, table: &mut Vec<Vec<String>>) -> bool  {
     is_moved
 }
 
-fn print_table(table: &Vec<Vec<String>>) {
-    for l in table {
-        println!("{:?}", l.join(""));
-    }
-    println!("-----------------------");
-}
+//fn print_table(table: &Vec<Vec<String>>) {
+//    for l in table {
+//        println!("{:?}", l.join(""));
+//    }
+//    println!("-----------------------");
+//}
 
 fn get_load(table: &Vec<Vec<String>>) -> usize {
     let mut load: usize = 0;
