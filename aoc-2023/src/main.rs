@@ -62,7 +62,17 @@ fn main() {
                     days::day11::a();
                     days::day11::b();
                 },
-                _ => println!("Day must be between 1-11")
+                Ok(12) => {
+                    println!("Day12");
+                    days::day12::a();
+                    days::day12::b();
+                },
+                Ok(13) => {
+                    println!("Day13");
+                    days::day13::a();
+                    days::day13::b();
+                },
+                _ => println!("Day must be between 1-13")
             }
         }
         _ => help()
