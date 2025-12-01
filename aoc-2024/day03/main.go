@@ -50,9 +50,7 @@ func calcRanges(len int, d [][]int, n [][]int) ([]int) {
   for _, e:= range n {
     nstarts = append(nstarts, e[0])
   }
-  fmt.Println(d)
   fmt.Println(dstarts)
-  fmt.Println(n)
   fmt.Println(nstarts)
   var res []int
   for i := range len {
@@ -87,13 +85,15 @@ func main() {
       nindexes := n.FindAllIndex([]byte(line), -1)
       fmt.Println("nind", nindexes)
       ranges := calcRanges(len(line), dindexes, nindexes)
+      fmt.Println(line)
       found := r.FindAll([]byte(line), -1)
+      fmt.Println(ranges)
+
       for i, e := range found {
         //fmt.Printf("%q\n", e)
         resa += calc(string(e[:]))
         if slices.Contains(ranges, findexes[i][0]) {
-          fmt.Println(ranges)
-          fmt.Println(line)
+          fmt.Println(string(e[:]))
           resb += calc(string(e[:]))
         }
       }
