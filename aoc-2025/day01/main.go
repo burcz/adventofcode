@@ -47,22 +47,27 @@ func fixNewValA(newVal int) int {
 	return newVal
 }
 
-func fixNewValB(newVal int, tick int) (int, int) {
+func fixNewValB(cur int, value int, newVal int, tick int) (int, int) {
 	MAX := 99
 
 	if newVal < 0 {
-		tick++
-		newVal = MAX + newVal
+		if cur != 0 {
+			//println("inc1")
+			tick++
+		}
+		newVal = MAX + newVal + 1
 	}
 
 	if newVal > MAX {
-		tick++
-		newVal = newVal - MAX
+		newVal = newVal - MAX - 1
+		if newVal != 0 {
+			//println("inc1")
+			tick++
+		}
 	}
 
 	if (newVal < 0 || newVal > MAX) {
-		// tick++
-		newVal, tick  = fixNewValB(newVal, tick)
+		newVal, tick  = fixNewValB(1, value, newVal, tick)
 	}
 
 	return newVal, tick
@@ -80,29 +85,20 @@ func rotateA(cur int, dir string, value int) int {
 }
 
 func rotateB(cur int, dir string, value int, tick int) (int, int) {
-	MAX := 99
 	var newVal int
 	if dir == "L" {
-		newVal = cur - value + 1
-		if newVal < 0 {
-			// tick++
-			// inc := ((MAX + newVal) / MAX ) * (-1) + 1
-			// tick += inc
-			// fmt.Printf("%d %d\n", inc, newVal)
-		}
+		newVal = cur - value
 	} else {
-		newVal = cur + value - 1
-		if newVal > MAX {
-			// tick++
-			// inc := (newVal - MAX) / MAX + 1
-			// tick += inc
-			// fmt.Printf("%d %d\n", inc, newVal)
-		}
+		newVal = cur + value
 	}
 
-	newVal, tick = fixNewValB(newVal, tick)
+	newVal, tick = fixNewValB(cur, value, newVal, tick)
 
-	// fmt.Printf("%s%d %d %d\n", dir, value, newVal, tick)
+  if newVal == 0 {
+		tick++
+		//println("inc0")
+	}
+	//fmt.Printf("%d %s%d %d %d\n", cur, dir, value, newVal, tick)
 	return newVal, tick
 }
 
@@ -170,9 +166,7 @@ func runForInputB(fileName string) int {
 
 		for _, command := range commands {
 			cur, tick = rotateB(cur, command.dir, command.value, tick)
-			if cur == 0 {
-				tick++
-			}
+			//if i == 280 { break }
 		}
 		return tick
 }
@@ -185,9 +179,9 @@ func main() {
 	var bTest = runForInputB("./input.test.txt")
 	var b = runForInputB("./input.txt")
 
-    fmt.Printf("a-test: %d\n", aTest)
-    fmt.Printf("a: %d\n", a)
-    fmt.Printf("b-test: %d\n", bTest)
+		  fmt.Printf("a: %d\n", a)
+		fmt.Printf("a-test: %d\n", aTest)
+		  fmt.Printf("b-test: %d\n", bTest)
 		fmt.Printf("b: %d\n", b)
     // fmt.Printf("b: %d\n", sumb)
 }
